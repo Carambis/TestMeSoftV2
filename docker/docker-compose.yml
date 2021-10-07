@@ -1,0 +1,39 @@
+version: '3.8'
+
+networks:
+  testmesoft:
+    name: testmesoft
+
+services:
+  postgres:
+    image: postgres
+    container_name: testmesoft-postgre
+    restart: always
+    hostname: postgre
+    ports:
+      - 5432:5432
+    volumes:
+      - ./init-keycloak.sql:/docker-entrypoint-initdb.d/init-keycloak.sql
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: thepassword
+    networks:
+      - testmesoft
+  keycloak:
+    image: bitnami/keycloak:latest
+    container_name: testmesoft-keycloak
+    networks:
+      - testmesoft
+    restart: always
+    environment:
+      - DB_VENDOR=postgres
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+      - KEYCLOAK_DATABASE_HOST=postgre
+      - KEYCLOAK_DATABASE_PORT=5432
+      - KEYCLOAK_DATABASE_USER=postgres
+      - KEYCLOAK_DATABASE_PASSWORD=thepassword
+    ports:
+      - 8081:8080
+    depends_on:
+      - postgres

@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/test_me_soft
+    username: postgres
+    password: thepassword
