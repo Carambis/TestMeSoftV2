@@ -6,3 +6,8 @@ spring:
     sql-script-encoding: UTF-8
   jpa:
     show-sql: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${KEYCLOAK_REALM_CERT_URL:http://localhost:8081/auth/realms/testmesoft/protocol/openid-connect/certs}
