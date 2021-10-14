@@ -1,4 +1,4 @@
---liquibase formatted sql
+﻿--liquibase formatted sql
 
 --changeset alepeshko:2
 CREATE TABLE task_types(

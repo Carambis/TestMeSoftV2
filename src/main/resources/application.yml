@@ -1,5 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/test_me_soft
+    url: jdbc:postgresql://localhost:5432/test_me_soft?useUnicode=true&characterEncoding=UTF-8
     username: postgres
     password: thepassword
+    sql-script-encoding: UTF-8
+  jpa:
+    show-sql: true
