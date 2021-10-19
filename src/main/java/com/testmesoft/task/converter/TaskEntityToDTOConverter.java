@@ -13,7 +13,7 @@ public class TaskEntityToDTOConverter implements Converter<TaskEntity, TaskDTO> 
                 .taskName(source.getTaskName())
                 .header(source.getHeader())
                 .taskPath(source.getTaskPath())
-                .taskTypeCode(source.getTaskType().getCode())
+                .taskTypeCode(source.getType().getCode())
                 .build();
     }
 }

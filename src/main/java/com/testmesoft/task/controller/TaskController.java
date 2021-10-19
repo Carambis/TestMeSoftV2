@@ -5,6 +5,7 @@ import com.testmesoft.task.service.TaskService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -23,5 +24,15 @@ public class TaskController {
     @PreAuthorize("hasRole('ROLE_admin')")
     public List<TaskDTO> getTasks() {
         return taskService.findAllTask();
+    }
+
+    @GetMapping("/startTest")
+    public void startTest(@RequestParam("count") int count, @RequestParam("type") String type){
+        taskService.startTest(count, type);
+    }
+
+    @GetMapping("/nextTask")
+    public TaskDTO nextTask(){
+        return taskService.nextTask();
     }
 }

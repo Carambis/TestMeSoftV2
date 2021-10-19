@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -57,7 +58,9 @@ public class LanguageServiceTest {
         List<TaskEntity> all = taskRepository.findAll();
         languageRepository.save(new LanguageEntity("as", "лвпов"));
         List<AnswerEntity> byTaskId = answerRepository.findByTaskId(1L);
+        List<TaskEntity> ui = taskRepository.findRandomTasks( "UI", PageRequest.of(0, 5));
         System.out.println(all.size());
+
     }
 
 

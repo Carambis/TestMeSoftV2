@@ -23,7 +23,7 @@ public class TaskEntity {
     private String taskPath;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "task_type_code", referencedColumnName = "code")
-    private TaskTypeEntity taskType;
+    private TaskTypeEntity type;
     @OneToMany(mappedBy = "task")
     private List<AnswerEntity> answers;
 
@@ -36,7 +36,7 @@ public class TaskEntity {
         this.taskName = taskName;
         this.header = header;
         this.taskPath = taskPath;
-        this.taskType = taskType;
+        this.type = taskType;
         this.answers = answers;
     }
 
@@ -80,12 +80,12 @@ public class TaskEntity {
         this.taskPath = taskPath;
     }
 
-    public TaskTypeEntity getTaskType() {
-        return taskType;
+    public TaskTypeEntity getType() {
+        return type;
     }
 
-    public void setTaskType(TaskTypeEntity taskType) {
-        this.taskType = taskType;
+    public void setType(TaskTypeEntity type) {
+        this.type = type;
     }
 
     public List<AnswerEntity> getAnswers() {
